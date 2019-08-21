@@ -1,0 +1,349 @@
+body {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+  background: url("./img.jpg") no-repeat;
+  background-size: cover;
+}
+
+body, html {
+  margin: auto;
+  padding: auto;
+}
+
+div#grid-container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 7fr;
+      grid-template-columns: 1fr 7fr;
+}
+
+/*Header*/
+header {
+  position: fixed;
+  padding-left: 2em;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  -webkit-transition: background-color 0s;
+  transition: background-color 0s;
+  color: #FFFFF0;
+}
+
+header h1 {
+  font-size: 40px;
+  line-height: 0.8;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: "Italiana", serif;
+}
+
+/*Recipes List*/
+#list {
+  border-top: 2px dotted #FFFFF0;
+  margin-top: 200px;
+  padding: 15px;
+  color: white;
+}
+
+#list .btn {
+  width: 50%;
+  margin: 0 auto;
+}
+
+#list ul {
+  margin: 0;
+  margin-top: 50px;
+  padding: 10px;
+  text-align: center;
+  line-height: 1.1;
+  font-size: 20px;
+}
+
+#list ul li {
+  list-style-type: none;
+  margin: 10px;
+  padding: 5px;
+  border-bottom: 1px dashed orange;
+}
+
+#list ul li:hover {
+  border-bottom: 3px dashed orange;
+}
+
+/*Buttons*/
+.btn {
+  background-color: #FCD12A;
+  color: #883000;
+  border: none;
+  padding: 10px;
+  display: block;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 10px;
+  font-family: "Montserrat", serif;
+  margin: 0 auto;
+}
+
+.btn:hover {
+  position: relative;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  left: 3px;
+  top: 3px;
+}
+
+/*Showcase*/
+section {
+  -ms-grid-column-align: center;
+      justify-self: center;
+  padding-top: 40px;
+  margin-top: 50px;
+  margin-left: 50px;
+  width: 80%;
+}
+
+section div.showcase {
+  width: 100%;
+  margin-bottom: 50px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 8fr;
+      grid-template-columns: 1fr 8fr;
+      grid-template-areas: ". header" "ing-header ing" "dir-header dir" ". buttons";
+  -ms-flex-line-pack: center;
+      align-content: center;
+}
+
+section div.showcase h2 {
+  font-size: 30px;
+  padding: 0px;
+  margin-bottom: 40px;
+  text-transform: uppercase;
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: header;
+  color: #FFFFF0;
+  text-align: center;
+}
+
+section div.showcase h3 {
+  font-size: 24px;
+  font-family: "Cormorant", serif;
+  color: #FFFFF0;
+}
+
+section div.showcase #showcase-ingredients,
+section div.showcase #showcase-directions {
+  text-align: left;
+  line-height: 1.6;
+  font-size: 17px;
+  padding: 10px 30px;
+  background-color: white;
+  margin: 10px;
+  color: black;
+}
+
+section div.showcase #showcase-ingredients {
+  list-style-type: disc;
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
+  grid-area: ing;
+  padding-left: 0;
+}
+
+section div.showcase #showcase-directions {
+  -ms-grid-row: 3;
+  -ms-grid-column: 2;
+  grid-area: dir;
+  padding-left: 0;
+}
+
+section div.showcase #buttons {
+  -ms-grid-row: 4;
+  -ms-grid-column: 2;
+  grid-area: buttons;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+section div.showcase #header-ing {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  grid-area: ing-header;
+}
+
+section div.showcase #header-dir {
+  -ms-grid-row: 3;
+  -ms-grid-column: 1;
+  grid-area: dir-header;
+}
+
+section div.showcase #header-ing, section div.showcase #header-dir {
+  -webkit-writing-mode: vertical-lr;
+      -ms-writing-mode: tb-lr;
+          writing-mode: vertical-lr;
+  text-orientation: mixed;
+  font-size: 40px;
+  padding: 0;
+  margin: 0;
+  place-self: center end;
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+section div.showcase .btn {
+  margin: 20px auto;
+  -ms-grid-column-align: center;
+      justify-self: center;
+  display: inline-block;
+}
+
+.create-edit-box {
+  margin: 100px auto;
+  margin-bottom: 130px;
+  width: 60%;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+/*Create and edit windows*/
+div#create-recipe, div#edit-recipe {
+  position: fixed;
+  background: url("./img.jpg") fixed no-repeat;
+  background-size: cover;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 3;
+  overflow: auto;
+  display: none;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+}
+
+div#create-recipe h1, div#edit-recipe h1 {
+  text-align: center;
+  font-family: "Italiana", serif;
+  margin-top: 50px;
+}
+
+div#create-recipe small, div#edit-recipe small {
+  color: #883000;
+  text-align: center;
+  font-family: "Cormorant", serif;
+  display: block;
+  font-size: 20px;
+  margin-bottom: 50px;
+}
+
+div#create-recipe input, div#create-recipe textarea, div#edit-recipe input, div#edit-recipe textarea {
+  width: 70%;
+  display: block;
+  margin: 0 auto;
+  border: 1px solid #e6e6e6;
+  margin-bottom: 15px;
+  background-color: #e6e6e6;
+  font-family: "Montserrat", serif;
+  font-size: 16px;
+}
+
+div#create-recipe input::-webkit-input-placeholder, div#create-recipe textarea::-webkit-input-placeholder, div#edit-recipe input::-webkit-input-placeholder, div#edit-recipe textarea::-webkit-input-placeholder {
+  font-family: "Montserrat",serif;
+  color: #5a5a5a;
+  font-size: 14px;
+}
+
+div#create-recipe input:-ms-input-placeholder, div#create-recipe textarea:-ms-input-placeholder, div#edit-recipe input:-ms-input-placeholder, div#edit-recipe textarea:-ms-input-placeholder {
+  font-family: "Montserrat",serif;
+  color: #5a5a5a;
+  font-size: 14px;
+}
+
+div#create-recipe input::-ms-input-placeholder, div#create-recipe textarea::-ms-input-placeholder, div#edit-recipe input::-ms-input-placeholder, div#edit-recipe textarea::-ms-input-placeholder {
+  font-family: "Montserrat",serif;
+  color: #5a5a5a;
+  font-size: 14px;
+}
+
+div#create-recipe input::placeholder, div#create-recipe textarea::placeholder, div#edit-recipe input::placeholder, div#edit-recipe textarea::placeholder {
+  font-family: "Montserrat",serif;
+  color: #5a5a5a;
+  font-size: 14px;
+}
+
+div#create-recipe input:hover, div#create-recipe textarea:hover, div#edit-recipe input:hover, div#edit-recipe textarea:hover {
+  border: 1px dashed darkorange;
+}
+
+div#create-recipe label, div#edit-recipe label {
+  width: 70%;
+  font-size: 16px;
+  text-transform: uppercase;
+  display: block;
+  margin-top: 5px;
+  margin: 0 auto;
+}
+
+div#create-recipe .btn, div#edit-recipe .btn {
+  margin: 20px auto;
+  -ms-grid-column-align: center;
+      justify-self: center;
+}
+
+.active {
+  position: fixed;
+  z-index: 4;
+  font-size: 18px;
+  display: block;
+  width: 100%;
+  top: 0;
+  background: white;
+  -webkit-box-shadow: 1px 1px 5px black;
+          box-shadow: 1px 1px 5px black;
+  padding: 3px;
+}
+
+.active h1 {
+  font-size: 20px;
+  color: black;
+  margin: 0;
+  padding: 7px;
+}
+
+@media only screen and (max-width: 840px) {
+  .create-edit-box {
+    width: 80%;
+  }
+  div#grid-container {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+  }
+  section {
+    width: 90%;
+    -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  section div.showcase {
+        grid-template-areas: "header header" "ing-header ing" "dir-header dir" "buttons buttons";
+  }
+  section div.showcase h3 {
+    font-size: 14px;
+  }
+  section div.showcase #header-ing, section div.showcase #header-dir {
+    font-size: 36px;
+  }
+}
+/*# sourceMappingURL=style.css.map */

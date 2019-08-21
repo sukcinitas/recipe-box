@@ -1,0 +1,290 @@
+body {
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+    background: url("./img.jpg") no-repeat;
+    background-size: cover;
+}
+body, html{
+    margin: auto;
+    padding: auto;
+}
+
+div#grid-container {
+    display: grid;
+    grid-template-columns: 1fr 7fr;
+}
+
+/*Header*/
+header {
+    position: fixed;
+    padding-left: 2em;
+    transition: 0.4s;
+    transition: background-color 0s;
+    color: #FFFFF0;
+
+    h1 {
+        font-size: 40px;
+        line-height: 0.8;
+        text-align: center;
+        text-transform: uppercase;
+        font-family: "Italiana", serif;
+    }
+}
+
+/*Recipes List*/
+#list {
+    border-top: 2px dotted #FFFFF0;
+    margin-top: 200px;
+    padding: 15px;
+    color: white;
+
+    .btn {
+        width: 50%;
+        margin: 0 auto;
+    }
+
+    ul {
+        margin: 0;
+        margin-top: 50px;
+        padding: 10px; 
+        text-align: center;
+        line-height: 1.1;
+        font-size: 20px;
+
+        li {
+            list-style-type: none;
+            margin: 10px;
+            padding: 5px;
+            border-bottom: 1px dashed orange;
+
+            &:hover{
+                border-bottom: 3px dashed orange;
+            }    
+        }
+    }
+}
+
+/*Buttons*/
+.btn {
+    background-color:  #FCD12A;
+    color: #883000;
+    border: none;
+    padding: 10px;
+    display: block;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 10px;
+    font-family: "Montserrat", serif;
+    margin: 0 auto;
+
+    &:hover {
+        position: relative;
+        box-shadow: none;
+        left: 3px;
+        top: 3px;
+        
+    }
+}
+
+/*Showcase*/
+section {
+    justify-self: center;
+    padding-top: 40px;
+    margin-top: 50px;
+    margin-left: 50px;
+    width: 80%;
+
+    div.showcase {
+        width: 100%;
+        margin-bottom: 50px;
+        display: grid;
+        grid-template-columns: 1fr 8fr;
+        grid-template-areas:
+        ". header"
+        "ing-header ing"
+        "dir-header dir"
+        ". buttons";
+        align-content: center;
+    
+        h2{
+            font-size: 30px;
+            padding: 0px;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            grid-area: header;
+            color: #FFFFF0;
+            text-align: center;
+        }    
+        h3 {
+            font-size: 24px;
+            font-family: "Cormorant", serif;
+            color: #FFFFF0;
+        }
+        #showcase-ingredients,
+        #showcase-directions {
+            text-align: left;
+            line-height: 1.6;
+            font-size: 17px;
+            padding: 10px 30px;
+            background-color:rgba(255, 255, 255, 1);
+            margin: 10px;
+            color: black;
+        }
+        #showcase-ingredients {
+            list-style-type: disc;
+            grid-area: ing;
+            padding-left: 0;
+        }
+        #showcase-directions {
+            grid-area: dir;
+            padding-left: 0;
+        }
+        #buttons {
+            grid-area: buttons;
+            display: flex;
+            flex-direction: row;
+
+        }
+        #header-ing {
+            grid-area: ing-header;
+        }
+        #header-dir {
+            grid-area: dir-header;
+        }
+        #header-ing, #header-dir {
+            writing-mode: vertical-lr;
+            text-orientation: mixed;
+            font-size: 40px;
+            padding: 0;
+            margin: 0;
+            place-self: center end;
+            transform: rotate(180deg);
+        }
+        .btn {
+            margin: 20px auto;
+            justify-self: center;
+            display: inline-block;
+        }
+    }  
+}
+
+
+.create-edit-box {
+    margin: 100px auto;
+    margin-bottom: 130px;
+    width: 60%;
+    background-color: rgba(255,255,255, 1);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/*Create and edit windows*/
+div#create-recipe, div#edit-recipe {
+    position: fixed;
+    background: url("./img.jpg") fixed no-repeat;
+    background-size: cover;
+    top: 0;
+    left:0;
+    right: 0;
+    bottom: 0;
+    z-index: 3;
+    overflow: auto;
+    display: none; //initial display is none, on clicking "NEW", "EDIT" - display is grid
+    grid-template-columns: 1fr;
+
+    h1 {
+        text-align: center;
+        font-family: "Italiana", serif;
+        margin-top: 50px;
+    }
+    small{
+        color: #883000;
+        text-align: center;
+        font-family: "Cormorant", serif;
+        display: block;
+        font-size: 20px;
+        margin-bottom: 50px;
+    } 
+    input, textarea {
+        width: 70%;
+        display: block;
+        margin: 0 auto;
+        border: 1px solid rgb(230,230,230);
+        margin-bottom: 15px;
+        background-color:rgb(230,230,230);
+        font-family: "Montserrat", serif;
+        font-size: 16px;
+        &::placeholder {
+            font-family: "Montserrat",serif;
+            color: rgb(90,90,90);
+            font-size: 14px;
+        }
+
+        &:hover {
+            border: 1px dashed darkorange;
+        }
+    }  
+    label {
+        width: 70%;
+        font-size: 16px;
+        text-transform: uppercase;
+        display: block;
+        margin-top: 5px;
+        margin: 0 auto;
+    } 
+    .btn {
+        margin: 20px auto;
+        justify-self: center;
+    }
+}
+.active {
+    position: fixed;
+    z-index: 4;
+    font-size: 18px;
+    display: block;
+    width: 100%;
+    top: 0;
+    background: white;
+    //border-bottom: 1px solid black;
+    box-shadow: 1px 1px 5px black;
+    padding: 3px;
+
+    h1 {
+        font-size: 20px;
+        color: black;
+        margin: 0;
+        padding: 7px;
+    }
+}
+@media only screen and (max-width: 840px) {
+    .create-edit-box {
+        width: 80%;
+    }
+    div#grid-container {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+    section {
+        width: 90%;
+        align-self: center;
+        margin-left: auto;
+        margin-right: auto;
+        
+        div.showcase {
+            grid-template-areas:
+            "header header"
+            "ing-header ing"
+            "dir-header dir"
+            "buttons buttons";
+
+            h3 {
+                font-size: 14px;
+            }
+            #header-ing, #header-dir {
+                font-size: 36px;
+            }
+        }
+    }
+  
+}
