@@ -1,14 +1,20 @@
+@import url("https://fonts.googleapis.com/css?family=Cormorant|Italiana|Montserrat&display=swap");
 body {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  font-family: "Montserrat", sans-serif;
-  background: url("./img.jpg") no-repeat;
-  background-size: cover;
 }
 
 body, html {
   margin: auto;
   padding: auto;
+  height: 100%;
+  width: 100%;
+}
+
+div#cont {
+  font-family: "Montserrat", sans-serif;
+  background: url("https://images.unsplash.com/photo-1532768907235-78653b7dc71d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1534&q=80") no-repeat;
+  background-size: cover;
 }
 
 div#grid-container {
@@ -18,7 +24,8 @@ div#grid-container {
       grid-template-columns: 1fr 7fr;
 }
 
-/*Header*/
+/*=========================Header======================
+=========================================================*/
 header {
   position: fixed;
   padding-left: 2em;
@@ -37,7 +44,8 @@ header h1 {
   font-family: "Italiana", serif;
 }
 
-/*Recipes List*/
+/*====================Recipes List==================
+======================================================*/
 #list {
   border-top: 2px dotted #FFFFF0;
   margin-top: 200px;
@@ -70,7 +78,8 @@ header h1 {
   border-bottom: 3px dashed orange;
 }
 
-/*Buttons*/
+/*===================Buttons==================
+================================================*/
 .btn {
   background-color: #FCD12A;
   color: #883000;
@@ -93,7 +102,8 @@ header h1 {
   top: 3px;
 }
 
-/*Showcase*/
+/*======================Showcase=========================
+===========================================================*/
 section {
   -ms-grid-column-align: center;
       justify-self: center;
@@ -110,15 +120,37 @@ section div.showcase {
   display: grid;
   -ms-grid-columns: 1fr 8fr;
       grid-template-columns: 1fr 8fr;
-      grid-template-areas: ". header" "ing-header ing" "dir-header dir" ". buttons";
+      grid-template-areas: ". header" ". prep" "ing-header ing" "dir-header dir" ". buttons";
   -ms-flex-line-pack: center;
       align-content: center;
+}
+
+section div.showcase #prep {
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
+  grid-area: prep;
+  color: white;
+  text-align: center;
+}
+
+section div.showcase #prep p {
+  display: inline-block;
+}
+
+section div.showcase #prep p span {
+  font-family: "Cormorant", serif;
+  font-size: 25px;
+  margin-right: 7px;
+}
+
+section div.showcase #prep p span i {
+  font-size: 22px;
 }
 
 section div.showcase h2 {
   font-size: 30px;
   padding: 0px;
-  margin-bottom: 40px;
+  margin-bottom: 60px;
   text-transform: uppercase;
   -ms-grid-row: 1;
   -ms-grid-column: 2;
@@ -146,21 +178,21 @@ section div.showcase #showcase-directions {
 
 section div.showcase #showcase-ingredients {
   list-style-type: disc;
-  -ms-grid-row: 2;
+  -ms-grid-row: 3;
   -ms-grid-column: 2;
   grid-area: ing;
   padding-left: 0;
 }
 
 section div.showcase #showcase-directions {
-  -ms-grid-row: 3;
+  -ms-grid-row: 4;
   -ms-grid-column: 2;
   grid-area: dir;
   padding-left: 0;
 }
 
 section div.showcase #buttons {
-  -ms-grid-row: 4;
+  -ms-grid-row: 5;
   -ms-grid-column: 2;
   grid-area: buttons;
   display: -webkit-box;
@@ -173,13 +205,13 @@ section div.showcase #buttons {
 }
 
 section div.showcase #header-ing {
-  -ms-grid-row: 2;
+  -ms-grid-row: 3;
   -ms-grid-column: 1;
   grid-area: ing-header;
 }
 
 section div.showcase #header-dir {
-  -ms-grid-row: 3;
+  -ms-grid-row: 4;
   -ms-grid-column: 1;
   grid-area: dir-header;
 }
@@ -204,6 +236,8 @@ section div.showcase .btn {
   display: inline-block;
 }
 
+/*==================Create and Edit windows===============
+===========================================================*/
 .create-edit-box {
   margin: 100px auto;
   margin-bottom: 130px;
@@ -213,16 +247,14 @@ section div.showcase .btn {
   border-radius: 10px;
 }
 
-/*Create and edit windows*/
 div#create-recipe, div#edit-recipe {
   position: fixed;
-  background: url("./img.jpg") fixed no-repeat;
-  background-size: cover;
+  background-color: rgba(120, 117, 134, 0.85);
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 3;
+  z-index: 5;
   overflow: auto;
   display: none;
   -ms-grid-columns: 1fr;
@@ -248,6 +280,7 @@ div#create-recipe input, div#create-recipe textarea, div#edit-recipe input, div#
   width: 70%;
   display: block;
   margin: 0 auto;
+  padding: 10px;
   border: 1px solid #e6e6e6;
   margin-bottom: 15px;
   background-color: #e6e6e6;
@@ -318,6 +351,8 @@ div#create-recipe .btn, div#edit-recipe .btn {
   padding: 7px;
 }
 
+/*==========Media Queries for Smaller Screens===============
+==============================================================*/
 @media only screen and (max-width: 840px) {
   .create-edit-box {
     width: 80%;
@@ -337,7 +372,7 @@ div#create-recipe .btn, div#edit-recipe .btn {
     margin-right: auto;
   }
   section div.showcase {
-        grid-template-areas: "header header" "ing-header ing" "dir-header dir" "buttons buttons";
+        grid-template-areas: "header header" "prep prep" "ing-header ing" "dir-header dir" "buttons buttons";
   }
   section div.showcase h3 {
     font-size: 14px;
