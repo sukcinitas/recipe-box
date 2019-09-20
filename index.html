@@ -3,9 +3,8 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="./style.css" type="text/css">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-
+        <link rel="stylesheet" href="./style.css" type="text/css">
         <title>Recipe Box || Vanilla JS Practise</title>
     </head>
 
@@ -36,8 +35,8 @@
                         <h3 id="header-dir">Directions: </h3>
                         <div id="showcase-directions"></div>
                         <div id="buttons">
-                            <button class="btn" onclick="deleteRecipe()">Delete the recipe</button>
-                            <button class="btn" onclick="document.querySelector('#edit-recipe').style.display = 'block'">Edit recipe</button>
+                            <button class="btn" onclick="deleteRecipe()">Delete</button>
+                            <button class="btn" onclick="document.querySelector('#edit-recipe').style.display = 'block'">Edit</button>
                         </div>
                     </div> 
                 </section>
@@ -67,6 +66,7 @@
                 <div id="edit-recipe">
                     <div class="create-edit-box">
                         <h1>Edit the recipe</h1>
+                        <small>To add new ingredient or direction push Enter, you can add ' -- ' before each if you please.</small>
                         <label>Recipe name</label>
                         <input type="text" id="edit-name" required>
                         <label>Ingredients</label>
