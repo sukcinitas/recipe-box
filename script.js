@@ -115,7 +115,6 @@ function inputRecipe(place) {
   //choosing a recipe to show in showcase
 function showRecipeName(item) {
     let obj = ((JSON.parse(localStorage.getItem("therecipes"))).filter(r => r.title === item))[0];
-    console.log(obj)
     let recipeIngredientsShow = obj.ingredients
                                         .split("\n")
                                         .map(item => `<li>${item}</li>`);
@@ -142,7 +141,6 @@ function deleteRecipe() {
     let name = document.querySelector("#showcase-name").innerHTML; //selected recipe name
 
     let array = ((JSON.parse(localStorage.getItem("therecipes"))).filter(r => r.title !== name));
-    console.log(array[0])
     localStorage.removeItem("therecipes");
     localStorage.setItem("therecipes", JSON.stringify(array));
     document.querySelector("#recipes-list").innerHTML = "";
@@ -186,12 +184,15 @@ function saveRecipe(choice) {
 } 
 
 //while scrolling "Recipe Box" header toggles between two designs
-window.addEventListener("scroll", function() {
+//content box is chosen instead of window because when height 100vh and scrollTop is not changing
+let cont = document.querySelector("#cont");
+cont.addEventListener("scroll", function() {
+    console.log(cont.scrollTop)
     const header = document.querySelector("header");
-    if (window.pageYOffset >= 115) {
+    if (cont.scrollTop >= 115) {
         header.innerHTML = "<h1>Recipe Box</h1>";
         header.classList.add("active");
-    } else if(window.pageYOffset < 115) {
+    } else if(cont.scrollTop < 115) {
         header.innerHTML = "<h1>Recipe<br>Box</h1>";
         header.classList.remove("active");            
     }
