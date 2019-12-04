@@ -55,7 +55,7 @@
                         <label>Preparation time:</label>
                         <input type="text" id="recipe-prepTime">
                         <label>Servings: </label>
-                        <input type="text" id="recipe-servings">
+                        <input type="number" id="recipe-servings" min=1 max=1000>
                         <button class="btn" onclick="inputRecipe('recipe')">Save</button>
                         <button class="btn" onclick="(function() {document.querySelector('#create-recipe').style.display = 'none';
                         return false;})()">Close</button>
@@ -78,9 +78,10 @@
                         <label>Preparation time</label>
                         <input type="text" id="edit-prepTime">
                         <label>Servings </label>
-                        <input type="text" id="edit-servings">
+                        <input type="number" id="edit-servings" min=1 max=1000>
                         <button class="btn" onclick="saveRecipe('save')">Save</button>
-                        <button class="btn" onclick="saveRecipe('close')">Close</button>
+                        <button class="btn" onclick="(function() {document.querySelector('#edit-recipe').style.display = 'none';
+                        return false;})()">Close</button>
                     </div>
                 </div>
             </div>

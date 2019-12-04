@@ -70,6 +70,8 @@ header h1 {
   text-align: center;
   line-height: 1.1;
   font-size: 20px;
+  max-height: 400px;
+  overflow: auto;
 }
 
 #list ul li {
@@ -328,6 +330,7 @@ div#create-recipe label, div#edit-recipe label {
   display: block;
   margin-top: 5px;
   margin: 0 auto;
+  padding-right: 20px;
 }
 
 div#create-recipe .btn, div#edit-recipe .btn {
@@ -354,6 +357,24 @@ div#create-recipe .btn, div#edit-recipe .btn {
   color: black;
   margin: 0;
   padding: 7px;
+}
+
+/*=========================Scrollbars=========================
+==============================================================*/
+::-webkit-scrollbar {
+  width: 3px;
+}
+
+::-webkit-scrollbar-track {
+  background: #777;
+}
+
+::-webkit-scrollbar-thumb {
+  background: orange;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #FCD12A;
 }
 
 /*==========Media Queries for Smaller Screens===============
@@ -391,7 +412,7 @@ div#create-recipe .btn, div#edit-recipe .btn {
     margin-right: auto;
   }
   section div.showcase {
-        grid-template-areas: "header header" "prep prep" "ing-header ing" "dir-header dir" "buttons buttons";
+        grid-template-areas: "header header" ". prep" "ing-header ing" "dir-header dir" ". buttons";
     font-size: 16px;
   }
   section div.showcase #showcase-ingredients,
@@ -399,6 +420,7 @@ div#create-recipe .btn, div#edit-recipe .btn {
     font-size: 15px;
     margin: 0px;
     margin-bottom: 10px;
+    margin-left: 5px;
   }
   section div.showcase h3 {
     font-size: 14px;
