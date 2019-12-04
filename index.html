@@ -53,9 +53,14 @@
                         <label>Directions</label>
                         <textarea id="recipe-directions" placeholder='Pushing "Enter" creates a new number.' rows="10" cols="30"></textarea>
                         <label>Preparation time:</label>
-                        <input type="text" id="recipe-prepTime">
+                        <div class="prep">
+                            <input type="number" id="recipe-prepTime-hours" min=0 max=23><span>h</span>
+                            <input type="number" id="recipe-prepTime-mins" min=0 max=59><span>mins</span>
+                        </div>>
                         <label>Servings: </label>
-                        <input type="number" id="recipe-servings" min=1 max=1000>
+                        <div class="prep">
+                            <input type="number" id="recipe-servings" min=1 max=1000>
+                        </div>
                         <button class="btn" onclick="inputRecipe('recipe')">Save</button>
                         <button class="btn" onclick="(function() {document.querySelector('#create-recipe').style.display = 'none';
                         return false;})()">Close</button>
@@ -76,9 +81,14 @@
                         <textarea id="edit-directions" rows="10"
                         cols="30"></textarea>
                         <label>Preparation time</label>
-                        <input type="text" id="edit-prepTime">
+                        <div class="prep">
+                            <input type="number" id="edit-prepTime-hours" min=0 max=23><span>h</span>
+                            <input type="number" id="edit-prepTime-mins" min=0 max=59><span>mins</span>
+                        </div>
                         <label>Servings </label>
-                        <input type="number" id="edit-servings" min=1 max=1000>
+                        <div class="prep">
+                            <input type="number" id="edit-servings" min=1 max=1000>
+                        </div>div>
                         <button class="btn" onclick="saveRecipe('save')">Save</button>
                         <button class="btn" onclick="(function() {document.querySelector('#edit-recipe').style.display = 'none';
                         return false;})()">Close</button>
