@@ -1,3 +1,4 @@
+// localStorage.clear();
 //Two recipes initially saved to a localStorage are not set repeatedly on a page reload/another browser session if deleted previously. "firstRecipeDeletionMarker" and "secondRecipeDeletionMarker" mark the deletion fact, so if they exist or initial recipes are already set, don't set them once more
 let array = JSON.parse(localStorage.getItem("therecipes")) || [];
 if((array.filter(r => r.title === "firstRecipeDeletionMarker" || r.title === "Lentil soup")).length === 0) {
@@ -97,7 +98,8 @@ function inputRecipe(place) {
         document.querySelector("#recipe-prepTime-hours").value = "";
         document.querySelector("#recipe-prepTime-mins").value = "";
         document.querySelector("#recipe-servings").value = "";
-
+        
+        showRecipe(recipeName, true);
     } else {
         return false; //can't save, either a name is not given or used already
     }
@@ -116,6 +118,7 @@ function showRecipe(item, prefill) {
                                         .map(item => `<li>${item}</li>`);
     let recipePrepTimeHours = (parseInt(obj.prepTime / 60)) > 0 ? (parseInt(obj.prepTime / 60)) + "h" : "";
     let recipePrepTimeMins = obj.prepTime % 60 > 0 ? obj.prepTime % 60 + "min" : "";
+    let recipeServings = obj.servings;
 
     document.querySelector("#showcase-name").innerHTML = item;
     document.querySelector("#showcase-ingredients").innerHTML = `<ul>${recipeIngredientsShow.reduce((item, sum) => item + sum)}</ul>`;
@@ -136,19 +139,7 @@ function deleteRecipe() {
     localStorage.setItem("therecipes", JSON.stringify(array));
     document.querySelector("#recipes-list").innerHTML = "";
     listRecipes();
-
-    //After deletion, if no recipes are left, show nothing, otherwise show firt recipe in the list
-    if ((((JSON.parse(localStorage.getItem("therecipes"))).filter(r => r.title !== "firstRecipeDeletionMarker" && r.title !== "secondRecipeDeletionMarker"))).length  ==  0) {
-        document.querySelector("#showcase-name").innerHTML = "";
-        document.querySelector("#showcase-ingredients").innerHTML = "";
-        document.querySelector("#showcase-directions").innerHTML = "";
-        document.querySelector("#showcase-prepTime-hours").innerHTML = "";
-        document.querySelector("#showcase-prepTime-mins").innerHTML = "";
-        document.querySelector("#showcase-servings").innerHTML = "";
-    } else {
-        showRecipe((array.filter(r => r.title != "firstRecipeDeletionMarker" && r.title != "secondRecipeDeletionMarker"))[0].title, false);
-    }
-
+  
     //Set deletion markers
     if (name === "Lentil soup") {   
         let saveArr = (JSON.parse(localStorage.getItem("therecipes")));
@@ -162,11 +153,30 @@ function deleteRecipe() {
         localStorage.removeItem("therecipes");
         localStorage.setItem("therecipes", JSON.stringify(saveArr));       
     }
+    //Check if it's not a deletion act in editing
+    //If no recipes are left, show nothing, otherwise show first recipe in the list
+    if (arguments[0] !== "edit") {
+      if ((((JSON.parse(localStorage.getItem("therecipes"))).filter(r => r.title !== "firstRecipeDeletionMarker" && r.title !== "secondRecipeDeletionMarker"))).length  ==  0) {
+          document.querySelector("#showcase-name").innerHTML = "";
+          document.querySelector("#showcase-ingredients").innerHTML = "";
+          document.querySelector("#showcase-directions").innerHTML = "";
+          document.querySelector("#showcase-prepTime").innerHTML = "";
+          document.querySelector("#showcase-servings").innerHTML = "";
+          document.querySelector("#edit-name").value = "";
+          document.querySelector("#edit-ingredients").value = "";
+          document.querySelector("#edit-directions").value = "";
+          document.querySelector("#edit-prepTime-hours").value = "";
+          document.querySelector("#edit-prepTime-mins").value = "";
+          document.querySelector("#edit-servings").value = "";
+      } else {
+          showRecipe((array.filter(r => r.title != "firstRecipeDeletionMarker" && r.title != "secondRecipeDeletionMarker"))[0].title, true);
+      }
+    }
 }
 
 //Save edited recipe
 function saveRecipe() {
-        deleteRecipe(); //edit works as deletion of old version and saving new 
+        deleteRecipe("edit"); //edit works as deletion of old version and saving new 
         inputRecipe("edit");
 } 
 
