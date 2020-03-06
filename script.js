@@ -1,5 +1,8 @@
 // localStorage.clear();
-//Two recipes initially saved to a localStorage are not set repeatedly on a page reload/another browser session if deleted previously. "firstRecipeDeletionMarker" and "secondRecipeDeletionMarker" mark the deletion fact, so if they exist or initial recipes are already set, don't set them once more
+// Two recipes initially saved to a localStorage are not set repeatedly
+// on a page reload/another browser session if deleted previously.
+// "firstRecipeDeletionMarker" and "secondRecipeDeletionMarker" mark the deletion fact,
+// so if they exist or initial recipes are already set, don't set intial recipes once more
 let array = JSON.parse(localStorage.getItem("therecipes")) || [];
 if((array.filter(r => r.title === "firstRecipeDeletionMarker" || r.title === "Lentil soup")).length === 0) {
     let obj = {
@@ -23,7 +26,8 @@ if ((array.filter(r => r.title === "secondRecipeDeletionMarker" || r.title === "
 localStorage.removeItem("therecipes");
 localStorage.setItem("therecipes", JSON.stringify(array));
 
-//Add names of all recipes that have been created and saved in a localStorage to a list except for deletion markers - "firstRecipeDeletionMarker" and "secondRecipeDeletionMarker"
+// Add names of all recipes that have been created and saved in a localStorage
+// to a list except for deletion markers - "firstRecipeDeletionMarker" and "secondRecipeDeletionMarker"
 const listRecipes = () => {
     const recipesListNames = (JSON.parse(localStorage.getItem("therecipes"))).map(r => r.title);
     for (let i = 0; i < recipesListNames.length; i++) {
@@ -39,12 +43,13 @@ const listRecipes = () => {
 listRecipes();
 
 
-//If recipes are not empty showcase the first recipe and pre-fill its edit fields
-if ((JSON.parse(localStorage.getItem("therecipes"))).filter(r => r.title != "firstRecipeDeletionMarker" && r.title != "secondRecipeDeletionMarker").length != 0) {
+// If recipes list is not empty showcase the first recipe and pre-fill its edit fields
+if ((JSON.parse(localStorage.getItem("therecipes")))
+         .filter(r => r.title != "firstRecipeDeletionMarker" && r.title != "secondRecipeDeletionMarker").length != 0) {
     showRecipe(document.querySelector("#recipes-list").firstChild.innerHTML, true);
 }
 
-//Pre-fill edit fields
+// Pre-fill edit fields
 function prefillEdit() {
     const name = document.querySelector("#showcase-name").innerHTML; //selected recipe name
     const recipe = ((JSON.parse(localStorage.getItem("therecipes"))).filter(r => r.title === name))[0];
@@ -61,7 +66,7 @@ function prefillEdit() {
     document.querySelector("#edit-prepTime-mins").value = prepTime % 60;  
 };
 
-//Save a recipe in localStorage from either create box or edit box (place)
+// Save a recipe in localStorage from either create box or edit box (place)
 function inputRecipe(place) {
 
     place === "recipe" ? document.querySelector(`#create-recipe`).style.display = "grid" :
@@ -85,13 +90,13 @@ function inputRecipe(place) {
         localStorage.removeItem("therecipes");
         localStorage.setItem("therecipes", JSON.stringify(saveArr));
 
-        //Add recipe name to the list of recipes
+        // Add recipe name to the list of recipes
         let recipesListItem = document.createElement("LI");
         recipesListItem.innerHTML = recipeName;
         recipesListItem.addEventListener("click", (e) => showRecipe(e.target.innerHTML, true));
         document.querySelector("#recipes-list").appendChild(recipesListItem);
         
-        //Reset create box fields
+        // Reset create box fields
         document.querySelector("#recipe-name").value = "";
         document.querySelector("#recipe-ingredients").value = "";
         document.querySelector("#recipe-directions").value = "";
@@ -107,7 +112,7 @@ function inputRecipe(place) {
     document.querySelector(`#edit-recipe`).style.display = "none";
 }
 
-//Choose a recipe to showcase
+// Choose a recipe to showcase
 function showRecipe(item, prefill) {
     let obj = ((JSON.parse(localStorage.getItem("therecipes"))).filter(r => r.title === item))[0];
     let recipeIngredientsShow = obj.ingredients
@@ -131,7 +136,7 @@ function showRecipe(item, prefill) {
     }   
 }
     
-//Remove the recipe
+// Remove the recipe
 function deleteRecipe() {
     let name = document.querySelector("#showcase-name").innerHTML; //selected recipe name
     let array = ((JSON.parse(localStorage.getItem("therecipes"))).filter(r => r.title !== name));
@@ -140,23 +145,24 @@ function deleteRecipe() {
     document.querySelector("#recipes-list").innerHTML = "";
     listRecipes();
   
-    //Set deletion markers
+    // Set deletion markers
     if (name === "Lentil soup") {   
         let saveArr = (JSON.parse(localStorage.getItem("therecipes")));
         saveArr.push({title: "firstRecipeDeletionMarker"});
         localStorage.removeItem("therecipes");
         localStorage.setItem("therecipes", JSON.stringify(saveArr));    
-    }
+    };
     if (name === "Broccoli soup with crispy croutons and goat's cheese") {
         let saveArr = (JSON.parse(localStorage.getItem("therecipes")));
         saveArr.push({title: "secondRecipeDeletionMarker"});
         localStorage.removeItem("therecipes");
         localStorage.setItem("therecipes", JSON.stringify(saveArr));       
-    }
-    //Check if it's not a deletion act in editing
-    //If no recipes are left, show nothing, otherwise show first recipe in the list
+    };
+    // Check if it's not a deletion act in editing
+    // If no recipes are left, show nothing, otherwise show first recipe in the list
     if (arguments[0] !== "edit") {
-      if ((((JSON.parse(localStorage.getItem("therecipes"))).filter(r => r.title !== "firstRecipeDeletionMarker" && r.title !== "secondRecipeDeletionMarker"))).length  ==  0) {
+      if ((((JSON.parse(localStorage.getItem("therecipes")))
+                 .filter(r => r.title !== "firstRecipeDeletionMarker" && r.title !== "secondRecipeDeletionMarker"))).length  ==  0) {
           document.querySelector("#showcase-name").innerHTML = "";
           document.querySelector("#showcase-ingredients").innerHTML = "";
           document.querySelector("#showcase-directions").innerHTML = "";
@@ -192,4 +198,4 @@ cont.addEventListener("scroll", () => {
         header.innerHTML = "<h1>Recipe<br>Box</h1>";
         header.classList.remove("active");            
     }
-})
+});

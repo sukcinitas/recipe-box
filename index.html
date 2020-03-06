@@ -3,8 +3,9 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./style.css">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-        <link rel="stylesheet" href="./style.css" type="text/css">
+
         <title>Recipe Box || Vanilla JS Practise</title>
     </head>
 
@@ -46,21 +47,27 @@
                     <div class="create-edit-box">
                         <h1>Create a recipe</h1>
                         <small>The recipe will be stored in your browser and accessible across browser sessions.</small>
-                        <label>Recipe name</label>
+
+                        <label for="recipe-name" >Recipe name</label>
                         <input type="text" id="recipe-name" required>
-                        <label>Ingredients</label>
+
+                        <label for="recipe-ingredients">Ingredients</label>
                         <textarea id="recipe-ingredients" placeholder='Pushing "Enter" creates a new bullet.' rows="10" cols="30"></textarea>
-                        <label>Directions</label>
+                        
+                        <label for="recipe-directions">Directions</label>
                         <textarea id="recipe-directions" placeholder='Pushing "Enter" creates a new number.' rows="10" cols="30"></textarea>
-                        <label>Preparation time:</label>
+                        
+                        <label>Preparation time</label>
                         <div class="prep">
                             <input type="number" id="recipe-prepTime-hours" min=0 max=23><span>h</span>
                             <input type="number" id="recipe-prepTime-mins" min=0 max=59><span>min</span>
-                        </div>>
-                        <label>Servings: </label>
-                        <div class="prep">
-                            <input type="number" id="recipe-servings" min=1 max=1000>
                         </div>
+                        
+                        <label>Servings</label>
+                        <div class="prep">
+                          <input type="number" id="recipe-servings" min=1 max=1000>   
+                        </div>
+                        
                         <button class="btn" onclick="inputRecipe('recipe')">Save</button>
                         <button class="btn" onclick="(function() {document.querySelector('#create-recipe').style.display = 'none';
                         return false;})()">Close</button>
@@ -72,23 +79,28 @@
                     <div class="create-edit-box">
                         <h1>Edit the recipe</h1>
                         <small>To add new ingredient or direction push Enter, you can add ' -- ' before each if you please.</small>
-                        <label>Recipe name</label>
+                        
+                        <label for="edit-name" >Recipe name</label>
                         <input type="text" id="edit-name" required>
-                        <label>Ingredients</label>
+                        
+                        <label for="edit-ingredients">Ingredients</label>
                         <textarea id="edit-ingredients" rows="10"
                         cols="30"></textarea>
-                        <label>Directions</label>
-                        <textarea id="edit-directions" rows="10"
-                        cols="30"></textarea>
+                        
+                        <label fro="edit-directions" >Directions</label>
+                        <textarea id="edit-directions" rows="10" cols="30"></textarea>
+                        
                         <label>Preparation time</label>
                         <div class="prep">
-                            <input type="number" id="edit-prepTime-hours" min=0 max=23><span>h</span>
-                            <input type="number" id="edit-prepTime-mins" min=0 max=59><span>min</span>
+                          <input type="number" id="edit-prepTime-hours" min=0 max=23><span>h</span>
+                          <input type="number" id="edit-prepTime-mins" min=0 max=59><span>min</span>
                         </div>
+                        
                         <label>Servings </label>
                         <div class="prep">
-                            <input type="number" id="edit-servings" min=1 max=1000>
-                        </div>div>
+                          <input type="number" id="edit-servings" min=1 max=1000>
+                        </div>
+
                         <button class="btn" onclick="saveRecipe('save')">Save</button>
                         <button class="btn" onclick="(function() {document.querySelector('#edit-recipe').style.display = 'none';
                         return false;})()">Close</button>
