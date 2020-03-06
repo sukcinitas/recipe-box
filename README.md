@@ -11,6 +11,7 @@ An application to add and edit recipes, which are stored in browser's localStora
 Clone this repository - `git clone https://github.com/sukcinitas/recipe-box.git` and open `index.html` with browser of your choice or
 preview live app [here](https://codepen.io/pieno_usas/full/jONVaLY).
 
+----
 ## Functionalities
 - Add, edit and delete recipes
 - Store recipes in browser's local storage (accessible across browser sessions)
