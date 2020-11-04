@@ -15,3 +15,7 @@ preview live app [here](https://codepen.io/pieno_usas/full/jONVaLY).
 ## Functionalities
 - Adding, editing and deleting recipes.
 - Recipes are stored in browser's localStorage (accessible across browser sessions).
+
+![recipe-box-04](https://user-images.githubusercontent.com/54353264/98120783-124fcc00-1eb7-11eb-8e89-328f8fd7925b.gif)
+![recipe-box-02](https://user-images.githubusercontent.com/54353264/98117820-f518fe80-1eb2-11eb-854f-e16324cd408c.gif)
+![recipe-box-03](https://user-images.githubusercontent.com/54353264/98117831-f77b5880-1eb2-11eb-9fca-12cb44787c20.gif)

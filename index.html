@@ -36,7 +36,7 @@
                         <h3 id="header-dir">Directions: </h3>
                         <div id="showcase-directions"></div>
                         <div id="buttons">
-                            <button class="btn" onclick="deleteRecipe()">Delete</button>
+                            <button class="btn" onclick="recipeBox.deleteRecipe()">Delete</button>
                             <button class="btn" onclick="document.querySelector('#edit-recipe').style.display = 'block'">Edit</button>
                         </div>
                     </div> 
@@ -68,7 +68,7 @@
                           <input type="number" id="recipe-servings" min=1 max=1000>   
                         </div>
                         
-                        <button class="btn" onclick="inputRecipe('recipe')">Save</button>
+                        <button class="btn" onclick="recipeBox.inputRecipe('recipe')">Save</button>
                         <button class="btn" onclick="(function() {document.querySelector('#create-recipe').style.display = 'none';
                         return false;})()">Close</button>
                     </div>
@@ -101,7 +101,7 @@
                           <input type="number" id="edit-servings" min=1 max=1000>
                         </div>
 
-                        <button class="btn" onclick="saveRecipe('save')">Save</button>
+                        <button class="btn" onclick="recipeBox.saveRecipe('save')">Save</button>
                         <button class="btn" onclick="(function() {document.querySelector('#edit-recipe').style.display = 'none';
                         return false;})()">Close</button>
                     </div>
