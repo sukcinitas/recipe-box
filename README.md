@@ -1,5 +1,5 @@
 # Recipe Box
-An application to add and edit recipes, which are stored in browser's localStorage. The main motivation for building this app was a wish to practise coding in and better understand vanilla JavaScript.
+A responsive application to add and edit recipes, which are stored on browser's localStorage. The main motivation for building this app was a wish to practise coding in and better understand vanilla JavaScript. You can preview the demo [here](https://local-recipes.netlify.app/).
 
 ----
 
@@ -10,8 +10,7 @@ An application to add and edit recipes, which are stored in browser's localStora
 ----
 
 ## Setup
-Clone this repository - `git clone https://github.com/sukcinitas/recipe-box.git` and open `index.html` with browser of your choice if you want to run an app from your local machine or
-preview live app [here](https://local-recipes.netlify.app/).
+Clone this repository - `git clone https://github.com/sukcinitas/recipe-box.git` and open `index.html` with browser of your choice if you want to run the app on your local machine.
 
 ----
 
